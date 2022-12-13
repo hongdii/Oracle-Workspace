@@ -30,5 +30,3 @@ GRANT CONNECT , RESOURCE TO KH;
 */
 
 
-
-
