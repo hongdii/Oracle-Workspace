@@ -198,7 +198,10 @@ WHERE (SALARY*12) >= 50000000;
 
 /*
     <논리연산자>
-    
+    여러개의 조건을 엮을때 사용
+    AND(자바 :&&) , OR(자바 :||)
+    AND : ~이면서 , 그리고
+    OR : ~이거나 , 또는
 */
 
 -- EMPLOYEE 테이블에서 부서코드가 D9이면서 급여가 500만원이상인 사원들의 이름, 부서코드, 급여 조회
@@ -284,6 +287,16 @@ SELECT *
 FROM EMPLOYEE
 WHERE EMP_NAME LIKE '_지_';
 
+-- 시험문제나옴
+-- 내가 찾고자하는 문자 -> _ %
+-- ha_iy@kh.or.kr
+-- sun_di@kh.or.kr
+-- _ 기준으로 앞에 딱 2글자만 있는 이메일
+SELECT *
+FROM EMPLOYEE
+WHERE EMAIL LIKE '__\_%' ESCAPE '\';    -- 탈출문자지정
+-- '\' 뒤의 글자를 특정패턴으로써가 아닌, 문자로 지정해줌
+
 -------------------------------- 실습문제 ----------------------------
 -- 1. 이름이 '연'으로 끝나는 사원들의 이름, 입사일 조회
 SELECT EMP_NAME, HIRE_DATE
@@ -312,7 +325,7 @@ WHERE DEPT_TITLE LIKE '해외영업%';
 -- 보너스를 받지 않는 사원들(BONUS칼럼의 값이 NULL)의 사번, 이름, 급여, 보너스
 SELECT EMP_ID, EMP_NAME, SALARY, BONUS
 FROM EMPLOYEE
-WHERE BONUS IS NULL;
+WHERE BONUS IS NULL;    -- NULL값은 동등비교하려면 무조건 IS를 사용함.
 
 -- 사수가 없는 사원들의 사원명, 사수번호, 부서코드 조회
 SELECT EMP_NAME, MANAGER_ID, DEPT_CODE
